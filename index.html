@@ -73,19 +73,18 @@
         const jsonView = document.getElementById('jsonView');
 
         btnGenerate.onclick = () => {
-            const jsonSchema = JSON.parse(schemaTextBlock.value);
-
             let result;
 
             try {
-                result = generateJsonFromJsonSchema(jsonSchema);
+                const jsonSchema = JSON.parse(schemaTextBlock.value);
+                result = JSON.stringify(generateJsonFromJsonSchema(jsonSchema), null, '\t');
             } catch (e) {
-                result = e;
+                result = 'your JSON data is not valid'
             }
 
             console.log('result', result)
 
-            jsonView.textContent = JSON.stringify(result, null, '\t');
+            jsonView.textContent = result;
         }
     </script>
 </body>
