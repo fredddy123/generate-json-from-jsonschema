@@ -35,5 +35,9 @@ function generateJsonFromJsonSchema(schema) {
         return Math.random() > 0.5;
     }
 
+    if (schema.type === 'any') {
+        return `string from type "any" ${Math.round(Math.random() * 10000)}`;
+    }
+
     throw 'schema is not valid';
 }
