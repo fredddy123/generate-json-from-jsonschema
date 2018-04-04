@@ -24,6 +24,10 @@ function generateJsonFromJsonSchema(schema) {
     }
 
     if (schema.type === 'array') {
+        if (!schema.items) {
+            return [];
+        }
+
         const arrLenth = Math.round(Math.random() * 3);
 
         return Array(arrLenth).join('.').split('.').reduce(arr => {
